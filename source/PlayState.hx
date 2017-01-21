@@ -15,7 +15,7 @@ import SoundPlayer;
 
 class PlayState extends FlxState
 {
-	var lvlname:String = "testland";
+	var lvlname:String = "testland";//"level1";
 	
 	var player:Pirate;
 	var walls:FlxTilemap;
