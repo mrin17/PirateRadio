@@ -22,11 +22,7 @@ class Radio extends FlxColorShiftingSprite
 		super(X, Y+150, FlxColor.fromRGB(100, 100, 100, 255));
 		loadGraphic(AssetPaths.radioTower__png);
 		id = ID;
-		setUpSound();
-	}
-	
-	public function setUpSound() {
-		sound = SoundPlayer.setUpRadioSound(x, y + 150);
+		sound = new RadioSound(x, y + 150);
 		sound.play(false, 0, 0);
 	}
 	

@@ -34,13 +34,6 @@ class SoundPlayer
 		musics.members[0].volume = 1;
 	}
 	
-	public static function setUpRadioSound(x:Float, y:Float):FlxSound {
-		var snd:FlxSound = new FlxSound();
-		snd.loadEmbedded("assets/sounds/radioStatic1.wav", true, false);
-		snd.proximity(x,y,FlxG.camera.target, FlxG.width *.2);
-		return snd;
-	}
-	
 	public static function getHeavier(rate:Float) {
 		var i:Int = 0;
 		while (i < musics.length - 1) {
