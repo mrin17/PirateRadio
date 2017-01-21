@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
+import flixel.util.FlxColor;
 
 /**
  * ...
@@ -14,7 +15,8 @@ class Radio extends FlxColorShiftingSprite
 
 	public function new(?X:Float=0, ?Y:Float=0, ID:Int) 
 	{
-		super(X, Y);
+		super(X, Y, FlxColor.fromRGB(100, 100, 100, 255));
+		loadGraphic(AssetPaths.radioTower__png);
 		id = ID;
 	}
 	
@@ -22,12 +24,17 @@ class Radio extends FlxColorShiftingSprite
 		return on;
 	}
 	
-	function turnOn(){
+	public function turnOn(){
 		on = true;
+		checkAllThings();
 	}
 	
 	function checkAllThings(){
-		
+		for (t in PlayState.things) {
+			if (t.id == id) {
+				t.activate();
+			}
+		}
 	}
 	
 }

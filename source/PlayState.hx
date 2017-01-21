@@ -25,13 +25,15 @@ class PlayState extends FlxState
 	
 	override public function create():Void
 	{
+		radios = new FlxTypedGroup<Radio>();
+		things = new FlxTypedGroup<Thing>();
 		makeLevel();
 		
 		add(image);
 		add(player);
 		add(walls);
-		
-		radios = new FlxTypedGroup<Radio>();
+		add(radios);
+		add(things);
 		
 		FlxG.worldBounds.set(walls.width, walls.height);
 		
@@ -43,6 +45,7 @@ class PlayState extends FlxState
 	{
 		Ctrl.update();
 		FlxG.collide(walls, player);
+		FlxG.overlap(player, radios, playerTouchRadio);
 		if (FlxG.keys.anyJustPressed(["R"])){
 			FlxG.resetState();
 		}
@@ -63,7 +66,18 @@ class PlayState extends FlxState
 		switch(entityName){
 			case "player":
 				player = new Pirate(x, y);
+			case "NPC":
+				var index:Int = Std.parseInt(entityData.get("index"));
+				PlayState.things.add(new NPC(x, y, index));
+			case "radioTower":
+				var index:Int = Std.parseInt(entityData.get("index"));
+				radios.add(new Radio(x, y, index));
 		}
+	}
+	
+	private function playerTouchRadio(P:Pirate, R:Radio):Void
+	{
+		R.turnOn();
 	}
 	
 }
