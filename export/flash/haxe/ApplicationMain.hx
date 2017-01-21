@@ -50,6 +50,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
+		urls.push ("assets/images/npc.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/player.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -155,7 +159,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "136",
+			build: "139",
 			company: "HaxeFlixel",
 			file: "Radio",
 			fps: 60,

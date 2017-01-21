@@ -63,6 +63,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_monsterrat_ttf);
 		
@@ -82,6 +83,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/cowboy.png", AssetType.IMAGE);
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
+		className.set ("assets/images/npc.png", __ASSET__assets_images_npc_png);
+		type.set ("assets/images/npc.png", AssetType.IMAGE);
 		className.set ("assets/images/player.png", __ASSET__assets_images_player_png);
 		type.set ("assets/images/player.png", AssetType.IMAGE);
 		className.set ("assets/images/walls.png", __ASSET__assets_images_walls_png);
@@ -129,6 +132,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "assets/images/npc.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/player.png";
 		path.set (id, id);
 		
@@ -205,6 +212,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
+		
+		className.set ("assets/images/npc.png", __ASSET__assets_images_npc_png);
+		type.set ("assets/images/npc.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/player.png", __ASSET__assets_images_player_png);
 		type.set ("assets/images/player.png", AssetType.IMAGE);
@@ -888,6 +898,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__assets_data_testland_oel extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_cowboy_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_images_go_here_txt extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__assets_images_npc_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_player_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_walls_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_wallssmall_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -902,6 +913,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 #elseif html5
+
 
 
 
@@ -933,6 +945,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:file("assets/data/testland.oel") #if display private #end class __ASSET__assets_data_testland_oel extends lime.utils.Bytes {}
 @:image("assets/images/cowboy.png") #if display private #end class __ASSET__assets_images_cowboy_png extends lime.graphics.Image {}
 @:file("assets/images/images-go-here.txt") #if display private #end class __ASSET__assets_images_images_go_here_txt extends lime.utils.Bytes {}
+@:image("assets/images/npc.png") #if display private #end class __ASSET__assets_images_npc_png extends lime.graphics.Image {}
 @:image("assets/images/player.png") #if display private #end class __ASSET__assets_images_player_png extends lime.graphics.Image {}
 @:image("assets/images/walls.png") #if display private #end class __ASSET__assets_images_walls_png extends lime.graphics.Image {}
 @:image("assets/images/wallssmall.png") #if display private #end class __ASSET__assets_images_wallssmall_png extends lime.graphics.Image {}

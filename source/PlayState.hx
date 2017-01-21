@@ -46,11 +46,6 @@ class PlayState extends FlxState
 		if (FlxG.keys.anyJustPressed(["R"])){
 			FlxG.resetState();
 		}
-		for (i in things){
-			for (r in radios){
-				
-			}
-		}
 		super.update(elapsed);
 	}
 	
