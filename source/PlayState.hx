@@ -25,13 +25,17 @@ class PlayState extends FlxState
 	
 	override public function create():Void
 	{
+		radios = new FlxTypedGroup<Radio>();
+		things = new FlxTypedGroup<Thing>();
 		makeLevel();
 		
 		add(image);
 		add(player);
 		add(walls);
+		add(radios);
+		add(things);
 		
-		radios = new FlxTypedGroup<Radio>();
+		walls.visible = false;
 		
 		FlxG.worldBounds.set(walls.width, walls.height);
 		
@@ -43,6 +47,7 @@ class PlayState extends FlxState
 	{
 		Ctrl.update();
 		FlxG.collide(walls, player);
+		FlxG.overlap(player, radios, playerTouchRadio);
 		if (FlxG.keys.anyJustPressed(["R"])){
 			FlxG.resetState();
 		}
@@ -52,17 +57,30 @@ class PlayState extends FlxState
 	function makeLevel(){ //makes a level
 		var load:FlxOgmoLoader = new FlxOgmoLoader("assets/data/" + lvlname + ".oel");
 		walls = load.loadTilemap(AssetPaths.walls__png, 76, 76, "walls");
-		image = load.loadTilemap(AssetPaths.walls__png, 76, 76, "walls");
+		image = load.loadTilemap(AssetPaths.tiles__png, 152, 152, "image");
 		load.loadEntities(placeEntities, "entities");
 	}
 	
 	private function placeEntities(entityName:String, entityData:Xml):Void //places entities everywhere
 	{
-		var x:Int = Std.parseInt(entityData.get("x"))*9;
-		var y:Int = Std.parseInt(entityData.get("y"))*9;
+		var x:Int = Math.round(Std.parseInt(entityData.get("x"))*9.5);
+		var y:Int = Math.round(Std.parseInt(entityData.get("y"))*9.5);
 		switch(entityName){
 			case "player":
 				player = new Pirate(x, y);
+			case "NPC":
+				var index:Int = Std.parseInt(entityData.get("index"));
+				PlayState.things.add(new NPC(x, y, index));
+			case "radioTower":
+				var index:Int = Std.parseInt(entityData.get("index"));
+				radios.add(new Radio(x, y, index));
+		}
+	}
+	
+	private function playerTouchRadio(P:Pirate, R:Radio):Void
+	{
+		if (Ctrl.jactivate) {
+			R.turnOn();
 		}
 	}
 	
