@@ -77,7 +77,9 @@ class PlayState extends FlxState
 	
 	private function playerTouchRadio(P:Pirate, R:Radio):Void
 	{
-		R.turnOn();
+		if (Ctrl.up) {
+			R.turnOn();
+		}
 	}
 	
 }
