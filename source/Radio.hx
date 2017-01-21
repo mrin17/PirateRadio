@@ -15,7 +15,7 @@ class Radio extends FlxColorShiftingSprite
 {
 	var on:Bool = false;
 	var id:Int = 0;
-	var sound:FlxSound;
+	var sound:RadioSound;
 	
 	public function new(?X:Float=0, ?Y:Float=0, ID:Int) 
 	{
@@ -24,6 +24,12 @@ class Radio extends FlxColorShiftingSprite
 		id = ID;
 		sound = new RadioSound(x, y + 150);
 		sound.play(false, 0, 0);
+	}
+	
+	override public function update(elapsed:Float):Void 
+	{
+		sound.calculateProximityVolume();
+		super.update(elapsed);
 	}
 	
 	function getOn(){
