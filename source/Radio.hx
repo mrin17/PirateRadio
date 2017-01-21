@@ -7,7 +7,7 @@ import flixel.system.FlxAssets.FlxGraphicAsset;
  * ...
  * @author ...
  */
-class Radio extends FlxSprite 
+class Radio extends FlxColorShiftingSprite 
 {
 	var on:Bool = false;
 	var id:Int = 0;

@@ -13,14 +13,10 @@ class FlxColorShiftingSprite extends FlxSprite
 	private var lightening:Bool = false; 
 	private var lightenRate:Int = 10;
 	
-	public function new(?X:Float=0, ?Y:Float=0, ?startColor:FlxColor=null) 
+	public function new(?X:Float=0, ?Y:Float=0, ?startColor:FlxColor) 
 	{
 		super(X, Y);
-		if (color == null) {
-			color = FlxColor.fromRGB(100, 100, 100, 255);
-		} else {
-			color = startColor;
-		}
+		color = startColor;
 	}
 	
 	override public function update(elapsed:Float):Void 
