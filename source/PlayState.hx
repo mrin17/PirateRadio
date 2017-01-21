@@ -17,7 +17,7 @@ class PlayState extends FlxState
 {
 	var lvlname:String = "testland";//"level1";
 	
-	var player:Pirate;
+	public static var player:Pirate;
 	var walls:FlxTilemap;
 	var image:FlxTilemap;
 	
@@ -25,19 +25,29 @@ class PlayState extends FlxState
 	var radios:FlxTypedGroup<Radio>;
 	var soundPlayer:SoundPlayer;
 	
+	var bg:FlxSprite;
+	
 	override public function create():Void
 	{
 		radios = new FlxTypedGroup<Radio>();
 		things = new FlxTypedGroup<Thing>();
+		
+		bg = new FlxSprite(0, 0);
+		bg.loadGraphic(AssetPaths.bg__png);
+		bg.scrollFactor.set(0.01, 0.01);
+		
 		makeLevel();
 		
-		add(image);
-		add(player);
+		add(bg);
 		add(walls);
+		add(image);
 		add(radios);
 		add(things);
+		add(player);
+		
 		
 		walls.visible = false;
+		image.visible = true;
 		
 		FlxG.worldBounds.set(walls.width, walls.height);
 		
@@ -70,14 +80,18 @@ class PlayState extends FlxState
 		var x:Int = Math.round(Std.parseInt(entityData.get("x"))*9.5);
 		var y:Int = Math.round(Std.parseInt(entityData.get("y"))*9.5);
 		switch(entityName){
-			case "player":
+			case "player":	
 				player = new Pirate(x, y);
-			case "NPC":
-				var index:Int = Std.parseInt(entityData.get("index"));
-				PlayState.things.add(new NPC(x, y, index));
-			case "radioTower":
-				var index:Int = Std.parseInt(entityData.get("index"));
-				radios.add(new Radio(x, y, index));
+			case "radioTower":	
+				radios.add(new Radio(x, y, Std.parseInt(entityData.get("index"))));
+			case "NPC":	
+				things.add(new NPC(x, y, Std.parseInt(entityData.get("index"))));
+			case "drone":
+				things.add(new Drone(x, y, Std.parseInt(entityData.get("index"))));
+			case "vine":
+				things.add(new Vine(x, y, Std.parseInt(entityData.get("index"))));
+			case "laser":
+				things.add(new Laser(x, y, Std.parseInt(entityData.get("index")), entityData.get("dir"), entityData.get("cap")=="True"));
 		}
 	}
 	

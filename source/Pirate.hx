@@ -12,7 +12,7 @@ import flixel.FlxObject;
 class Pirate extends FlxSprite
 {
 	var state:String = "";
-	var speed:Int = 40;
+	var speed:Int = 30;
 	var maxspeed:Int = 300;
 	var jumpboom:Int = 1000;
 	var wallClimbing:Bool = false;
@@ -25,10 +25,12 @@ class Pirate extends FlxSprite
 	public function new(X:Float = 0, Y:Float = 0) {
 		super(X, Y);
 		loadGraphic(AssetPaths.cowboy__png, true, 150, 150);
-		animation.add("idle", [4]);
-		animation.add("run", [5, 6, 7, 8, 9, 10, 11], 10);
-		animation.add("slide", [0]);
-		animation.add("jump", [1, 2, 3], 5);
+		animation.add("idle", [8]);
+		animation.add("run", [15, 14, 13, 12, 11, 10, 9], 10);
+		animation.add("slide", [3]);
+		animation.add("jump", [4]);
+		animation.add("fall", [5, 6, 7], 7);
+		animation.add("climb", [2, 1, 0, 1, 2, 1, 2], 10, false);
 		animation.play("idle");
 		acceleration.y = 2500;
 		drag.x = drag.y = 1000;
@@ -42,7 +44,6 @@ class Pirate extends FlxSprite
 		wallClimb();
 		control();
 		jumpRefresh();
-		trace(velocity.x);
 		super.update(elapsed);
 	}
 	
@@ -67,8 +68,15 @@ class Pirate extends FlxSprite
 			}
 			facing = FlxObject.LEFT;
 		}
-		if (!Ctrl.left && !Ctrl.right && isTouching(FlxObject.FLOOR)){
+		if (!Ctrl.left && !Ctrl.right && isTouching(FlxObject.FLOOR) && !isTouching(FlxObject.WALL)){
 			animation.play("idle");
+		}
+		if (!isTouching(FlxObject.FLOOR) && !isTouching(FlxObject.WALL)){
+			if (velocity.y < 0 ){
+				animation.play("jump");
+			}else{
+				animation.play("fall");
+			}
 		}
 		if (jumps > 0 && Ctrl.jjump){
 			doTheJump();
@@ -88,34 +96,37 @@ class Pirate extends FlxSprite
 		velocity.y = -jumpboom;
 		if (isTouching(FlxObject.WALL) && !isTouching(FlxObject.FLOOR)){
 			state = "sidejump";
-			velocity.y = -jumpboom/1.2;
+			velocity.y = -jumpboom*1.2;
 			if (isTouching(FlxObject.RIGHT)){
-				velocity.x = -maxspeed*7;
+				velocity.x = -maxspeed*4;
 			}else{
-				velocity.x = maxspeed*7;
+				velocity.x = maxspeed * 4;
 			}
 		}
 	}
 	
+	public function bounce(){
+		velocity.y = -jumpboom;
+	}
+	
 	function wallClimb(){
-		if (!wallClimbing && isTouching(FlxObject.WALL)){
+		var correctSide:Bool = (isTouching(FlxObject.RIGHT) && Ctrl.right) || (isTouching(FlxObject.LEFT) && Ctrl.left);
+		if (!wallClimbing && isTouching(FlxObject.WALL) && correctSide){
 			wallClimbTimer = 20;
 			wallClimbing = true;
 			if(isTouching(FlxObject.FLOOR)){
 				velocity.y = -jumpboom / 5;
 			}
 			state = "wallclimb";
-			trace("wallclimb start");
+			animation.play("climb");
 		}
-		if (wallClimbing && wallClimbTimer > 0){
+		if (wallClimbing && wallClimbTimer > 0 && correctSide){
 			wallClimbTimer--;
 			velocity.y -= jumpboom/15;
-			trace("climbing");
 		}
-		if (wallClimbing && isTouching(FlxObject.FLOOR) || isTouching(FlxObject.WALL)&&state=="sidejump"){
+		if (wallClimbing && isTouching(FlxObject.FLOOR) || !correctSide ||isTouching(FlxObject.WALL)&&state=="sidejump"){
 			wallClimbing = false;
 			state = "idle";
-			trace("climb reset");
 		}
 	}
 	

@@ -11,6 +11,7 @@ import flixel.util.FlxColor;
 class Thing extends FlxColorShiftingSprite 
 {
 	public var id:Int = 0;
+	var on:Bool = false;
 	public function new(?X:Float=0, ?Y:Float=0, ID:Int) 
 	{
 		super(X, Y, FlxColor.fromRGB(100, 100, 100, 255));
@@ -21,8 +22,8 @@ class Thing extends FlxColorShiftingSprite
 	// Override this if you want different activate() functionality
 	public function activate() 
 	{
+		on = true;
 		fullyLighten();
 	}
-	
 	
 }
