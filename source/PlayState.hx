@@ -11,6 +11,7 @@ import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
 import flixel.ui.FlxButton;
 import flixel.math.FlxMath;
+import SoundPlayer;
 
 class PlayState extends FlxState
 {
@@ -22,6 +23,7 @@ class PlayState extends FlxState
 	
 	public static var things:FlxTypedGroup<Thing>;
 	var radios:FlxTypedGroup<Radio>;
+	var soundPlayer:SoundPlayer;
 	
 	override public function create():Void
 	{
@@ -40,7 +42,9 @@ class PlayState extends FlxState
 		FlxG.worldBounds.set(walls.width, walls.height);
 		
 		FlxG.camera.follow(player, FlxCameraFollowStyle.PLATFORMER);
+		SoundPlayer.start();
 		super.create();
+
 	}
 
 	override public function update(elapsed:Float):Void
@@ -50,6 +54,12 @@ class PlayState extends FlxState
 		FlxG.overlap(player, radios, playerTouchRadio);
 		if (FlxG.keys.anyJustPressed(["R"])){
 			FlxG.resetState();
+		}
+		if (FlxG.keys.anyJustPressed(["O"])){
+			SoundPlayer.reset();
+		}
+		if (FlxG.keys.anyJustPressed(["P"])){
+			SoundPlayer.getHeavier(.25);
 		}
 		super.update(elapsed);
 	}
