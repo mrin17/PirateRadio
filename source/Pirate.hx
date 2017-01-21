@@ -9,7 +9,7 @@ import flixel.FlxObject;
  * ...
  * @author ...
  */
-class Pirate extends FlxSprite 
+class Pirate extends FlxColorShiftingSprite 
 {
 	var state:String = "";
 	var speed:Int = 40;
@@ -21,7 +21,7 @@ class Pirate extends FlxSprite
 	
 	
 	public function new(X:Float = 0, Y:Float = 0) {
-		super(X, Y);
+		super(X, Y, FlxColor.fromRGB(100, 100, 100, 255));
 		//loadGraphic(AssetPaths.cowboy__png);
 		makeGraphic(152, 152);
 		acceleration.y = 2500;
