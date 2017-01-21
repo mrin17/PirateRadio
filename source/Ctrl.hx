@@ -10,15 +10,15 @@ import flixel.input.gamepad.FlxGamepadInputID;
 class Ctrl
 {
 	
-	//jump/shoot
+	//jump/activate
 	public static var jump:Bool = false;
-	public static var shoot:Bool = false;
+	public static var activate:Bool = false;
 	//just pressed
 	public static var jjump:Bool = false;
-	public static var jshoot:Bool = false;
+	public static var jactivate:Bool = false;
 	//just released
 	public static var rjump:Bool = false;
-	public static var rshoot:Bool = false;
+	public static var ractivate:Bool = false;
 	//directions
 	public static var left:Bool = false;
 	public static var right:Bool = false;
@@ -34,11 +34,11 @@ class Ctrl
 	
 	public static function update(){
 		jump = FlxG.keys.anyPressed(["Z"]);
-		shoot = FlxG.keys.anyPressed(["X"]);
+		activate = FlxG.keys.anyPressed(["X"]);
 		jjump = FlxG.keys.anyJustPressed(["Z"]);
-		jshoot = FlxG.keys.anyJustPressed(["X"]);
+		jactivate = FlxG.keys.anyJustPressed(["X"]);
 		rjump = FlxG.keys.anyJustReleased(["Z"]);
-		rshoot = FlxG.keys.anyJustReleased(["X"]);
+		ractivate = FlxG.keys.anyJustReleased(["X"]);
 		up = FlxG.keys.anyPressed(["UP"]);
 		down = FlxG.keys.anyPressed(["DOWN"]);
 		left = FlxG.keys.anyPressed(["LEFT"]);
@@ -65,8 +65,8 @@ class Ctrl
 		jjump = jjump || gp.anyJustPressed([FlxGamepadInputID.A]);
 		rjump = rjump || gp.anyJustReleased([FlxGamepadInputID.A]);
 		
-		shoot = shoot || gp.anyPressed([FlxGamepadInputID.X]);
-		jshoot = jshoot || gp.anyJustPressed([FlxGamepadInputID.X]);
-		rshoot = rshoot || gp.anyJustReleased([FlxGamepadInputID.X]);
+		activate = activate || gp.anyPressed([FlxGamepadInputID.X]);
+		jactivate = jactivate || gp.anyJustPressed([FlxGamepadInputID.X]);
+		ractivate = ractivate || gp.anyJustReleased([FlxGamepadInputID.X]);
 	}
 }

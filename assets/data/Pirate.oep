@@ -52,8 +52,8 @@
     <LayerDefinition xsi:type="TileLayerDefinition">
       <Name>image</Name>
       <Grid>
-        <Width>8</Width>
-        <Height>8</Height>
+        <Width>16</Width>
+        <Height>16</Height>
       </Grid>
       <ScrollFactor>
         <X>1</X>
@@ -69,6 +69,15 @@
       <TileSize>
         <Width>8</Width>
         <Height>8</Height>
+      </TileSize>
+      <TileSep>0</TileSep>
+    </Tileset>
+    <Tileset>
+      <Name>image</Name>
+      <FilePath>..\images\tilessmall.png</FilePath>
+      <TileSize>
+        <Width>16</Width>
+        <Height>16</Height>
       </TileSize>
       <TileSep>0</TileSep>
     </Tileset>

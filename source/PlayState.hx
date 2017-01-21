@@ -35,6 +35,8 @@ class PlayState extends FlxState
 		add(radios);
 		add(things);
 		
+		walls.visible = false;
+		
 		FlxG.worldBounds.set(walls.width, walls.height);
 		
 		FlxG.camera.follow(player, FlxCameraFollowStyle.PLATFORMER);
@@ -55,14 +57,14 @@ class PlayState extends FlxState
 	function makeLevel(){ //makes a level
 		var load:FlxOgmoLoader = new FlxOgmoLoader("assets/data/" + lvlname + ".oel");
 		walls = load.loadTilemap(AssetPaths.walls__png, 76, 76, "walls");
-		image = load.loadTilemap(AssetPaths.walls__png, 76, 76, "walls");
+		image = load.loadTilemap(AssetPaths.tiles__png, 152, 152, "image");
 		load.loadEntities(placeEntities, "entities");
 	}
 	
 	private function placeEntities(entityName:String, entityData:Xml):Void //places entities everywhere
 	{
-		var x:Int = Std.parseInt(entityData.get("x"))*9;
-		var y:Int = Std.parseInt(entityData.get("y"))*9;
+		var x:Int = Math.round(Std.parseInt(entityData.get("x"))*9.5);
+		var y:Int = Math.round(Std.parseInt(entityData.get("y"))*9.5);
 		switch(entityName){
 			case "player":
 				player = new Pirate(x, y);
@@ -77,7 +79,7 @@ class PlayState extends FlxState
 	
 	private function playerTouchRadio(P:Pirate, R:Radio):Void
 	{
-		if (Ctrl.up) {
+		if (Ctrl.jactivate) {
 			R.turnOn();
 		}
 	}

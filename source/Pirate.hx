@@ -9,7 +9,7 @@ import flixel.FlxObject;
  * ...
  * @author ...
  */
-class Pirate extends FlxColorShiftingSprite 
+class Pirate extends FlxSprite
 {
 	var state:String = "";
 	var speed:Int = 40;
@@ -19,14 +19,22 @@ class Pirate extends FlxColorShiftingSprite
 	var wallClimbTimer:Int = 20;
 	var jumps:Int = 0;
 	
+	var groundDrag:Int = 500;
+	var airDrag:Int = 500;
 	
 	public function new(X:Float = 0, Y:Float = 0) {
-		super(X, Y, FlxColor.fromRGB(100, 100, 100, 255));
-		//loadGraphic(AssetPaths.cowboy__png);
-		makeGraphic(152, 152);
+		super(X, Y);
+		loadGraphic(AssetPaths.cowboy__png, true, 150, 150);
+		animation.add("idle", [4]);
+		animation.add("run", [5, 6, 7, 8, 9, 10, 11], 10);
+		animation.add("slide", [0]);
+		animation.add("jump", [1, 2, 3], 5);
+		animation.play("idle");
 		acceleration.y = 2500;
-		drag.x = drag.y = 500;
+		drag.x = drag.y = 1000;
 		velocity.y = 200;
+		setFacingFlip(FlxObject.RIGHT, false, false);
+		setFacingFlip(FlxObject.LEFT, true, false);
 	}
 	
 	override public function update(elapsed:Float):Void 
@@ -41,9 +49,26 @@ class Pirate extends FlxColorShiftingSprite
 	function control(){
 		if (Ctrl.right){
 			velocity.x += speed;
+			if(isTouching(FlxObject.FLOOR)){
+				animation.play("run");
+				if (velocity.x < 0){
+					animation.play("slide");
+				}
+			}
+			facing = FlxObject.RIGHT;
 		}
 		if (Ctrl.left){
 			velocity.x -= speed;
+			if(isTouching(FlxObject.FLOOR)){
+				animation.play("run");
+				if (velocity.x > 0){
+					animation.play("slide");
+				}
+			}
+			facing = FlxObject.LEFT;
+		}
+		if (!Ctrl.left && !Ctrl.right && isTouching(FlxObject.FLOOR)){
+			animation.play("idle");
 		}
 		if (jumps > 0 && Ctrl.jjump){
 			doTheJump();
@@ -59,14 +84,15 @@ class Pirate extends FlxColorShiftingSprite
 	
 	function doTheJump(){
 		jumps--;
+		animation.play("jump");
 		velocity.y = -jumpboom;
 		if (isTouching(FlxObject.WALL) && !isTouching(FlxObject.FLOOR)){
 			state = "sidejump";
-			velocity.y = -jumpboom;
+			velocity.y = -jumpboom/1.2;
 			if (isTouching(FlxObject.RIGHT)){
-				velocity.x = -maxspeed*5;
+				velocity.x = -maxspeed*7;
 			}else{
-				velocity.x = maxspeed*5;
+				velocity.x = maxspeed*7;
 			}
 		}
 	}
