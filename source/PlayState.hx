@@ -55,12 +55,6 @@ class PlayState extends FlxState
 		if (FlxG.keys.anyJustPressed(["R"])){
 			FlxG.resetState();
 		}
-		if (FlxG.keys.anyJustPressed(["O"])){
-			SoundPlayer.reset();
-		}
-		if (FlxG.keys.anyJustPressed(["P"])){
-			SoundPlayer.getHeavier(.25);
-		}
 		super.update(elapsed);
 	}
 	
