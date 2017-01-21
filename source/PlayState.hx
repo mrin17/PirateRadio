@@ -90,6 +90,8 @@ class PlayState extends FlxState
 				things.add(new Drone(x, y, Std.parseInt(entityData.get("index"))));
 			case "vine":
 				things.add(new Vine(x, y, Std.parseInt(entityData.get("index"))));
+			case "laser":
+				things.add(new Laser(x, y, Std.parseInt(entityData.get("index")), entityData.get("dir"), entityData.get("cap")=="True"));
 		}
 	}
 	
