@@ -16,7 +16,7 @@ class Pirate extends FlxSprite
 	var maxspeed:Int = 300;
 	var jumpboom:Int = 1250;
 	var wallClimbing:Bool = false;
-	var WALL_CLIMB_MAX:Int = 10;
+	var WALL_CLIMB_MAX:Int = 12;
 	var wallClimbTimer:Int;
 	var jumps:Int = 0;
 	
