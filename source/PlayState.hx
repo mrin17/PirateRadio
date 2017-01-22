@@ -32,7 +32,7 @@ class PlayState extends FlxState
 		radios = new FlxTypedGroup<Radio>();
 		things = new FlxTypedGroup<Thing>();
 		
-		bg = new FlxSprite(0, 0);
+		bg = new FlxSprite(0, 80);
 		bg.loadGraphic(AssetPaths.bg__png);
 		bg.scrollFactor.set(0.01, 0.01);
 		
