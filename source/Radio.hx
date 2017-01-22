@@ -37,8 +37,11 @@ class Radio extends FlxColorShiftingSprite
 	}
 	
 	public function turnOn(){
+		if (on) {
+			return;
+		}
 		on = true;
-		SoundPlayer.getHeavier(.25);
+		SoundPlayer.getHeavier(.34);
 		sound.stop();
 		checkAllThings();
 		FlxG.camera.flash();

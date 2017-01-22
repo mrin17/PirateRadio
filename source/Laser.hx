@@ -13,6 +13,7 @@ class Laser extends Thing
 	{
 		super(X + 51, Y, ID);
 		loadGraphic(AssetPaths.laser__png, true, 50, 152);
+		immovable = true;
 		color=FlxColor.fromRGB(255, 255, 255, 255);
 		if (cap){
 			animation.add("i", [1]);

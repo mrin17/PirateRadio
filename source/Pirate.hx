@@ -14,9 +14,10 @@ class Pirate extends FlxSprite
 	var state:String = "";
 	var speed:Int = 30;
 	var maxspeed:Int = 300;
-	var jumpboom:Int = 1000;
+	var jumpboom:Int = 1250;
 	var wallClimbing:Bool = false;
-	var wallClimbTimer:Int = 20;
+	var WALL_CLIMB_MAX:Int = 10;
+	var wallClimbTimer:Int;
 	var jumps:Int = 0;
 	
 	var groundDrag:Int = 500;
@@ -112,7 +113,7 @@ class Pirate extends FlxSprite
 	function wallClimb(){
 		var correctSide:Bool = (isTouching(FlxObject.RIGHT) && Ctrl.right) || (isTouching(FlxObject.LEFT) && Ctrl.left);
 		if (!wallClimbing && isTouching(FlxObject.WALL) && correctSide){
-			wallClimbTimer = 20;
+			wallClimbTimer = WALL_CLIMB_MAX;
 			wallClimbing = true;
 			if(isTouching(FlxObject.FLOOR)){
 				velocity.y = -jumpboom / 5;
