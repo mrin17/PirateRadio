@@ -9,15 +9,15 @@
     <radioTower id="2" x="32" y="864" index="0" />
     <player id="0" x="912" y="960" />
     <drone id="8" x="1264" y="544" index="4" />
-    <laser id="31" x="1568" y="512" index="5" dir="R" cap="True" />
+    <laser id="31" x="1568" y="512" index="5" dir="L" cap="True" />
     <laser id="32" x="1584" y="512" index="5" dir="R" cap="False" />
     <laser id="55" x="880" y="912" index="5" dir="U" cap="False" />
     <laser id="56" x="880" y="896" index="5" dir="U" cap="False" />
     <laser id="57" x="880" y="880" index="5" dir="U" cap="False" />
     <laser id="58" x="880" y="864" index="5" dir="L" cap="True" />
-    <laser id="59" x="896" y="864" index="5" dir="L" cap="False" />
-    <laser id="60" x="912" y="864" index="5" dir="L" cap="False" />
-    <laser id="61" x="928" y="864" index="5" dir="L" cap="False" />
+    <laser id="59" x="896" y="864" index="5" dir="R" cap="False" />
+    <laser id="60" x="912" y="864" index="5" dir="R" cap="False" />
+    <laser id="61" x="928" y="864" index="5" dir="R" cap="False" />
     <laser id="62" x="944" y="864" index="5" dir="L" cap="True" />
     <laser id="63" x="944" y="880" index="5" dir="U" cap="False" />
     <laser id="64" x="944" y="896" index="5" dir="U" cap="False" />
@@ -29,7 +29,7 @@
     <laser id="37" x="1664" y="512" index="5" dir="R" cap="False" />
     <laser id="38" x="1680" y="512" index="5" dir="R" cap="False" />
     <laser id="39" x="1696" y="512" index="5" dir="R" cap="True" />
-    <laser id="40" x="1568" y="528" index="5" dir="R" cap="True" />
+    <laser id="40" x="1568" y="528" index="5" dir="L" cap="True" />
     <laser id="41" x="1584" y="528" index="5" dir="R" cap="False" />
     <laser id="42" x="1600" y="528" index="5" dir="R" cap="False" />
     <laser id="43" x="1616" y="528" index="5" dir="R" cap="False" />
@@ -38,7 +38,7 @@
     <laser id="46" x="1664" y="528" index="5" dir="R" cap="False" />
     <laser id="47" x="1680" y="528" index="5" dir="R" cap="False" />
     <laser id="48" x="1696" y="528" index="5" dir="R" cap="True" />
-    <laser id="49" x="1568" y="544" index="5" dir="R" cap="True" />
+    <laser id="49" x="1568" y="544" index="5" dir="L" cap="True" />
     <laser id="50" x="1584" y="544" index="5" dir="R" cap="False" />
     <laser id="51" x="1600" y="544" index="5" dir="R" cap="False" />
     <laser id="52" x="1616" y="544" index="5" dir="R" cap="False" />
@@ -70,7 +70,7 @@
     <vine id="24" x="1728" y="880" index="0" />
     <drone id="25" x="1280" y="544" index="4" />
     <movingPlatform id="30" x="96" y="944" index="0" timeMove="250" />
-    <movingPlatform id="70" x="1424" y="928" index="0" timeMove="300" />
+    <movingPlatform id="70" x="1424" y="928" index="0" timeMove="305" />
     <umbrella id="69" x="480" y="704" index="3" />
     <umbrella id="71" x="1536" y="784" index="3" />
     <fountain id="72" x="352" y="672" index="0" />
