@@ -11,8 +11,8 @@ class MovingPlatform extends Thing
 	var xtick:Int = 0;
 	var ytick:Int = 0;
 	var xspeed:Int = 5;
-	var yspeed:Int = 12;
-	var xset:Int = 140;
+	var yspeed:Int = 0;
+	var xset:Int = 250;
 	var yset:Int = 30;
 	var hasPlayer:Bool = false;
 	
@@ -21,8 +21,7 @@ class MovingPlatform extends Thing
 		super(X, Y, ID);
 		xtick = xset;
 		ytick = yset;
-		loadGraphic(AssetPaths.drone__png, true, 155, 88);
-		animation.add("on", [1]);
+		loadGraphic(AssetPaths.platform__png, true, 304, 152);
 		mass = 10;
 		immovable = true;
 	}
@@ -32,7 +31,7 @@ class MovingPlatform extends Thing
 		if (on){
 			fly();
 		}
-		if (PlayState.player.y<y-height&&FlxG.collide(PlayState.player, this)){
+		if (PlayState.player.y < y && FlxG.collide(PlayState.player, this)){
 			hasPlayer = true;
 		} else {
 			hasPlayer = false;
@@ -42,7 +41,6 @@ class MovingPlatform extends Thing
 	
 	override public function activate() 
 	{
-		animation.play("on");
 		super.activate();
 	}
 	
