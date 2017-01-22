@@ -17,6 +17,7 @@ class MenuState extends FlxState
 		image = new FlxSprite();
 		image.loadGraphic(AssetPaths.menu__png);
 		add(image);
+		SoundPlayer.playMusic("PuzzleCubeLight60ms");
 		super.create();
 	} 
 	

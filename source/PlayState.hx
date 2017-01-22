@@ -16,7 +16,7 @@ import flixel.util.FlxColor;
 
 class PlayState extends FlxState
 {
-	var lvlname:String = "level1";
+	var lvlname:String = "testland";
 	
 	public static var player:Pirate;
 	var walls:FlxTilemap;
@@ -124,6 +124,8 @@ class PlayState extends FlxState
 	}
 	
 	function endGame() {
+		SoundPlayer.silence();
+		FlxG.sound.pause();
 		FlxG.switchState(new EndState());
 	}
 	

@@ -11,7 +11,7 @@ import flixel.text.FlxText;
  */
 class StoryState extends FlxState 
 {
-	var dlg:Array<String> = ["Something something radios", "something something pirates", "its hiiiiiiiiiiiiiiiiiigh noon"];
+	var dlg:Array<String> = ["- 30XX A.D. -\n\nMETROPOLIS: A CITY OF ROBOTS -- AND A CITY IN RUINS.\n\nTWO HUNDRED YEARS AGO, THE PEOPLE -- MY PEOPLE -- FELL TO THE ORDER.", "THE ORDER BLED THIS CITY DRY, TURNING IT INTO A GHOST TOWN.\n\nBACK THEN, THERE WAS NOTHING I COULD DO BUT WATCH.", "BUT NOW... NOW I KNOW HOW TO REVITALIZE THIS CITY. BRING IT BACK TO LIFE.\n\nAND IT STARTS WITH THESE RADIO TOWERS."];
 	var count:Int = 0;
 	var image:FlxSprite;
 	var txt:FlxText;
@@ -24,7 +24,7 @@ class StoryState extends FlxState
 		image.animation.add("story", [0, 1, 2]);
 		image.animation.play("story");
 		image.animation.pause();
-		txt = new FlxText(0, FlxG.height - FlxG.height / 4, 1920, "Something something radios", 18);
+		txt = new FlxText(0, FlxG.height - FlxG.height / 4, 1920, "Something something radios", 32);
 		txt.alignment = "center";
 		txt.text = dlg[count];
 		add(image);
@@ -45,6 +45,7 @@ class StoryState extends FlxState
 	function next(){
 		count++;
 		if (count == 3){
+			FlxG.sound.pause();
 			FlxG.switchState(new PlayState());
 			return;
 		}

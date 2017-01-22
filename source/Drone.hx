@@ -1,5 +1,6 @@
 package;
 import flixel.FlxG;
+import flixel.util.FlxColor;
 
 /**
  * ...
@@ -20,10 +21,10 @@ class Drone extends Thing
 		super(X, Y, ID);
 		xtick = xset;
 		ytick = yset;
-		loadGraphic(AssetPaths.drone__png, true, 155, 88);
-		animation.add("on", [1]);
+		loadGraphic(AssetPaths.drone__png);
 		mass = 10;
 		immovable = true;
+		color = FlxColor.fromRGB(100, 100, 100, 255);
 	}
 	
 	override public function update(elapsed:Float):Void 
@@ -41,7 +42,7 @@ class Drone extends Thing
 	
 	override public function activate() 
 	{
-		animation.play("on");
+		color = FlxColor.fromRGB(255, 255, 255, 255);
 		super.activate();
 	}
 	
