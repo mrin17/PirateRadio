@@ -15,12 +15,17 @@ class RadioSound extends FlxSound
 	var myX:Float;
 	var myY:Float;
 
+	static var c:Int = 1;
 	public function new (X:Float = 0, Y:Float = 0)
 	{
 		super();
 		myX = X;
 		myY = Y;
-		loadEmbedded("assets/sounds/radioStatic1.wav", true, false);
+		loadEmbedded("assets/sounds/radioStatic" + c + ".wav", true, false);
+		c++;
+		if (c > 1) {
+			c = 1;
+		}
 		volume = 0;
 	}
 	
