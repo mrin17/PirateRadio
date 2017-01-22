@@ -46,6 +46,8 @@ class PlayState extends FlxState
 		add(things);
 		add(player);
 		
+		FlxG.camera.setScrollBounds(0,walls.width, 0,walls.height);
+		
 		
 		walls.visible = false;
 		image.visible = true;

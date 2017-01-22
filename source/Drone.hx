@@ -32,7 +32,7 @@ class Drone extends Thing
 		if (on){
 			fly();
 		}
-		if (PlayState.player.y<y-height&&FlxG.collide(PlayState.player, this)){
+		if (PlayState.player.y<y&&FlxG.collide(PlayState.player, this)){
 			PlayState.player.bounce();
 			trace(PlayState.player.y);
 			trace(y);
