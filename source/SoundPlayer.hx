@@ -14,6 +14,7 @@ import flixel.system.FlxAssets;
 class SoundPlayer
 {
 	public static var musics:FlxTypedGroup<FlxSound>;
+	static var mute:Bool = false;
 	
 	public static function start() 
 	{
@@ -57,6 +58,17 @@ class SoundPlayer
 		while (i < musics.length - 1) {
 			musics.members[i].volume = 0;
 			i++;
+		}
+	}
+	
+	public static function muteMe(){
+		mute = !mute;
+		for (m in musics){
+			if(mute){
+				m.stop();
+			}else{
+				m.play();
+			}
 		}
 	}
 }
