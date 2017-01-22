@@ -16,11 +16,12 @@ class MovingPlatform extends Thing
 	var yset:Int = 30;
 	var hasPlayer:Bool = false;
 	
-	public function new(?X:Float=0, ?Y:Float=0, ID:Int) 
+	public function new(?X:Float=0, ?Y:Float=0, ID:Int, time:Int) 
 	{
 		super(X, Y, ID);
 		xtick = xset;
 		ytick = yset;
+		xset = time;
 		loadGraphic(AssetPaths.platform__png, true, 304, 152);
 		mass = 10;
 		immovable = true;
