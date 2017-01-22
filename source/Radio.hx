@@ -19,7 +19,7 @@ class Radio extends FlxColorShiftingSprite
 	
 	public function new(?X:Float=0, ?Y:Float=0, ID:Int) 
 	{
-		super(X, Y+160, FlxColor.fromRGB(100, 100, 100, 255));
+		super(X, Y+159, FlxColor.fromRGB(100, 100, 100, 255));
 		loadGraphic(AssetPaths.radioTower__png);
 		id = ID;
 		sound = new RadioSound(x, y + 150);
