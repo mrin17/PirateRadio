@@ -17,5 +17,6 @@ class Main extends Sprite
 		#end
 		super();
 		addChild(new FlxGame(1920, 1080, PlayState, 1, 60, 60, true));
+		Ctrl.update();
 	}
 }

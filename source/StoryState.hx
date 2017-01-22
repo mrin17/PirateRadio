@@ -18,18 +18,17 @@ class StoryState extends FlxState
 	
 	override public function create():Void
 	{
-		image = new FlxSprite(540, 160);
-		image.loadGraphic(AssetPaths.story__png, true, 800, 400);
+		FlxG.camera.flash();
+		image = new FlxSprite(440, 100);
+		image.loadGraphic(AssetPaths.story__png, true, 1050, 601);
 		image.animation.add("story", [0, 1, 2]);
 		image.animation.play("story");
 		image.animation.pause();
-		txt = new FlxText(0, FlxG.height - FlxG.height / 3, 1920,"Something something radios", 18);
+		txt = new FlxText(0, FlxG.height - FlxG.height / 4, 1920, "Something something radios", 18);
 		txt.alignment = "center";
 		txt.text = dlg[count];
 		add(image);
 		add(txt);
-		count = 0;
-		Ctrl.update();
 		super.create();
 	}
 	

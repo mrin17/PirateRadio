@@ -11,16 +11,20 @@ import flixel.FlxState;
 class MenuState extends FlxState 
 {
 	var image:FlxSprite;
-	public function new() 
+	
+	override public function create():Void 
 	{
 		image = new FlxSprite();
+		image.loadGraphic(AssetPaths.menu__png);
 		add(image);
-	}
+		super.create();
+	} 
 	
 	override public function update(elapsed:Float):Void 
 	{
+		Ctrl.update();
 		if (Ctrl.jjump || Ctrl.jactivate){
-			FlxG.switchState(new ControlState());
+			FlxG.switchState(new StoryState());
 		}
 		super.update(elapsed);
 	}
