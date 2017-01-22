@@ -17,6 +17,7 @@ class FlxColorShiftingSprite extends FlxSprite
 	{
 		super(X, Y);
 		color = startColor;
+		color = FlxColor.fromRGB(255, 255, 255, 255);
 	}
 	
 	override public function update(elapsed:Float):Void 

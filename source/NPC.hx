@@ -8,13 +8,18 @@ import flixel.system.FlxAssets.FlxGraphicAsset;
  */
 class NPC extends Thing 
 {
-
+	static var c:Int = 0;
 	public function new(?X:Float=0, ?Y:Float=0, ID:Int) 
 	{
 		super(X, Y, ID);
-		loadGraphic(AssetPaths.npc__png, true, 90, 152);
-		animation.add("off", [0]);
-		animation.add("on", [1]);
+		c++;
+		loadGraphic("assets/images/crowdnpc" + c+".png", true, 150, 150);
+		if (c > 1){
+			c = 0;
+		}
+		animation.add("off", [1]);
+		animation.add("on", [0]);
+		animation.play("off");
 	}
 	
 	override function activate() 

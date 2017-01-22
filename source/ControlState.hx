@@ -8,7 +8,7 @@ import flixel.FlxState;
  * ...
  * @author ...
  */
-class MenuState extends FlxState 
+class ControlState extends FlxState 
 {
 	var image:FlxSprite;
 	public function new() 
@@ -20,7 +20,7 @@ class MenuState extends FlxState
 	override public function update(elapsed:Float):Void 
 	{
 		if (Ctrl.jjump || Ctrl.jactivate){
-			FlxG.switchState(new ControlState());
+			FlxG.switchState(new StoryState());
 		}
 		super.update(elapsed);
 	}
