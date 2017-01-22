@@ -16,6 +16,6 @@ class Main extends Sprite
 			flash = true;
 		#end
 		super();
-		addChild(new FlxGame(1920, 1080, StoryState, 1, 60, 60, true));
+		addChild(new FlxGame(1920, 1080, PlayState, 1, 60, 60, true));
 	}
 }

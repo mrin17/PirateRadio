@@ -28,7 +28,7 @@ class StoryState extends FlxState
 		txt.text = dlg[count];
 		add(image);
 		add(txt);
-		count =-1;
+		count = 0;
 		Ctrl.update();
 		super.create();
 	}
