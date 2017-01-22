@@ -15,6 +15,7 @@ class SoundPlayer
 {
 	public static var musics:FlxTypedGroup<FlxSound>;
 	static var mute:Bool = false;
+	static var MAX_VOLUME:Float = 0.7;
 	
 	public static function start() 
 	{
@@ -38,7 +39,7 @@ class SoundPlayer
 			m.volume = 0;
 			m.play(false, 0.0);
 		}
-		musics.members[0].volume = 1;
+		musics.members[0].volume = MAX_VOLUME;
 	}
 	
 	public static function getHeavier(rate:Float) {
@@ -47,6 +48,9 @@ class SoundPlayer
 			if (musics.members[i].volume > 0) {
 				musics.members[i].volume -= rate;
 				musics.members[i + 1].volume += rate;
+				if (musics.members[i+1].volume > MAX_VOLUME){
+					musics.members[i + 1].volume = MAX_VOLUME;
+				}
 				break;
 			}
 			i++;
@@ -55,7 +59,7 @@ class SoundPlayer
 	
 	public static function reset() {
 		var i:Int = 1;
-		musics.members[0].volume = 1;
+		musics.members[0].volume = MAX_VOLUME;
 		while (i < musics.length - 1) {
 			musics.members[i].volume = 0;
 			i++;

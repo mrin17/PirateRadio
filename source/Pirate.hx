@@ -112,6 +112,10 @@ class Pirate extends FlxSprite
 		velocity.y = -jumpboom;
 	}
 	
+	public function hibounce(){
+		velocity.y = -jumpboom*1.5;
+	}
+	
 	function wallClimb(){
 		var correctSide:Bool = (isTouching(FlxObject.RIGHT) && Ctrl.right) || (isTouching(FlxObject.LEFT) && Ctrl.left);
 		if (!wallClimbing && isTouching(FlxObject.WALL) && correctSide){
