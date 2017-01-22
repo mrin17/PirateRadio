@@ -100,6 +100,8 @@ class PlayState extends FlxState
 				things.add(new Billboard(x, y, Std.parseInt(entityData.get("index"))));
 			case "umbrella":
 				things.add(new Umbrella(x, y, Std.parseInt(entityData.get("index"))));
+			case "movingPlatform":
+				things.add(new MovingPlatform(x, y, Std.parseInt(entityData.get("index"))));
 			case "laser":
 				things.add(new Laser(x, y, Std.parseInt(entityData.get("index")), entityData.get("dir"), entityData.get("cap")=="True"));
 		}
