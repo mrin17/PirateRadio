@@ -22,7 +22,7 @@ class Vine extends Thing
 			if (PlayState.player.x > x){
 				PlayState.player.x = x + width + 20;
 			}else{
-				PlayState.player.x = x - 20;
+				PlayState.player.x = x - width - 20;
 			}
 		}
 		super.update(elapsed);
