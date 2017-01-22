@@ -11,8 +11,10 @@ class Vine extends Thing
 	public function new(?X:Float=0, ?Y:Float=0, ID:Int) 
 	{
 		super(X-1, Y, ID);
-		makeGraphic(154, 154);
-		visible = false;
+		loadGraphic(AssetPaths.electricFence__png, true, 150, 150);
+		animation.add("on", [0, 1], 20, true);
+		animation.add("off", [2]);
+		animation.play("on");
 		immovable = true;
 	}
 	
@@ -26,6 +28,11 @@ class Vine extends Thing
 			}
 		}
 		super.update(elapsed);
+	}
+	
+	override public function activate() {
+		super.activate();
+		animation.play("off");
 	}
 	
 }
