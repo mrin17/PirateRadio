@@ -12,6 +12,7 @@ import flixel.tile.FlxTilemap;
 import flixel.ui.FlxButton;
 import flixel.math.FlxMath;
 import SoundPlayer;
+import flixel.util.FlxColor;
 
 class PlayState extends FlxState
 {
@@ -118,8 +119,12 @@ class PlayState extends FlxState
 			}
 		}
 		if (numTowersActivated == 7) {
-			// END GAME STUFF GOES HERE!!!!
+			FlxG.camera.fade(FlxColor.WHITE, 2, false, endGame);
 		}
+	}
+	
+	function endGame() {
+		FlxG.switchState(new EndState());
 	}
 	
 }
