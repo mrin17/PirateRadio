@@ -46,8 +46,7 @@ class PlayState extends FlxState
 		add(things);
 		add(player);
 		
-		FlxG.camera.setScrollBounds(0,walls.width, 0,walls.height);
-		
+		FlxG.camera.setScrollBounds(0, walls.width, 0, walls.height);
 		
 		walls.visible = false;
 		image.visible = true;
@@ -121,6 +120,7 @@ class PlayState extends FlxState
 			}
 		}
 		if (numTowersActivated == 7) {
+			FlxG.camera.stopFX();
 			FlxG.camera.fade(FlxColor.WHITE, 2, false, endGame);
 		}
 	}
