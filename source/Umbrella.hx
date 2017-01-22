@@ -22,8 +22,6 @@ class Umbrella extends Thing
 	
 	override public function update(elapsed:Float):Void 
 	{
-		trace(PlayState.player.y);
-		trace(y);
 		if (on&&PlayState.player.y < y && PlayState.player.velocity.y > 0 && FlxG.overlap(PlayState.player, this)){
 			PlayState.player.bounce();
 		}

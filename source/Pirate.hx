@@ -101,7 +101,7 @@ class Pirate extends FlxSprite
 			state = "sidejump";
 			velocity.y = -jumpboom*1.2;
 			if (isTouching(FlxObject.RIGHT)){
-				velocity.x = -maxspeed*4;
+				velocity.x = -maxspeed * 4;
 			}else{
 				velocity.x = maxspeed * 4;
 			}
@@ -117,19 +117,22 @@ class Pirate extends FlxSprite
 		if (!wallClimbing && isTouching(FlxObject.WALL) && correctSide){
 			wallClimbTimer = WALL_CLIMB_MAX;
 			wallClimbing = true;
+			velocity.y = 0;
 			if(isTouching(FlxObject.FLOOR)){
-				velocity.y = -jumpboom / 5;
+				velocity.y -= jumpboom;
+				trace("hijump");
 			}
 			state = "wallclimb";
 			animation.play("climb");
 		}
-		if (wallClimbing && wallClimbTimer > 0 && correctSide){
+		if (wallClimbing && wallClimbTimer > 0){
 			wallClimbTimer--;
-			velocity.y -= jumpboom/15;
+			velocity.y -= jumpboom / 10;
 		}
-		if (wallClimbing && isTouching(FlxObject.FLOOR) || !correctSide ||isTouching(FlxObject.WALL)&&state=="sidejump"){
+		if (wallClimbing && isTouching(FlxObject.FLOOR) ||isTouching(FlxObject.WALL)&&state=="sidejump"){
 			wallClimbing = false;
 			state = "idle";
+			trace("end climb");
 		}
 	}
 	
