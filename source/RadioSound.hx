@@ -26,7 +26,7 @@ class RadioSound extends FlxSound
 	
 	public function calculateProximityVolume() {
 		
-		trace(FlxG.camera.target.getMidpoint());
+		//trace(FlxG.camera.target.getMidpoint());
 		var dist:Float = getDistance(new FlxPoint(myX, myY), FlxG.camera.target.getMidpoint());
 		if (dist > MAX_DIST_AWAY) {
 			volume = 0;
