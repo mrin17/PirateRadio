@@ -16,7 +16,7 @@ class Pirate extends FlxSprite
 	var maxspeed:Int = 300;
 	var jumpboom:Int = 1250;
 	var wallClimbing:Bool = false;
-	var WALL_CLIMB_MAX:Int = 12;
+	var WALL_CLIMB_MAX:Int = 20;
 	var wallClimbTimer:Int;
 	var jumps:Int = 0;
 	
@@ -101,9 +101,9 @@ class Pirate extends FlxSprite
 			state = "sidejump";
 			velocity.y = -jumpboom*1.2;
 			if (isTouching(FlxObject.RIGHT)){
-				velocity.x = -maxspeed * 4;
+				velocity.x = -maxspeed * 4.5;
 			}else{
-				velocity.x = maxspeed * 4;
+				velocity.x = maxspeed * 4.5;
 			}
 		}
 	}
@@ -118,16 +118,20 @@ class Pirate extends FlxSprite
 			wallClimbTimer = WALL_CLIMB_MAX;
 			wallClimbing = true;
 			velocity.y = 0;
+			/*
 			if(isTouching(FlxObject.FLOOR)){
 				velocity.y -= jumpboom;
 				trace("hijump");
 			}
+			*/
 			state = "wallclimb";
 			animation.play("climb");
 		}
 		if (wallClimbing && wallClimbTimer > 0){
 			wallClimbTimer--;
-			velocity.y -= jumpboom / 10;
+			if (isTouching(FlxObject.WALL)) {
+				velocity.y -= jumpboom / 15;
+			}
 		}
 		if (wallClimbing && isTouching(FlxObject.FLOOR) ||isTouching(FlxObject.WALL)&&state=="sidejump"){
 			wallClimbing = false;

@@ -8,15 +8,20 @@ import flixel.util.FlxColor;
  */
 class Billboard extends Thing 
 {
-
+	static var c:Int = 0;
 	public function new(?X:Float=0, ?Y:Float=0, ID:Int)
 	{
 		super(X, Y, ID);
-		loadGraphic(AssetPaths.billboard__png, true, 608, 304);
+		c++;
+		loadGraphic("assets/images/billboard" + c+".png", true, 608, 304);
+		if (c > 2){
+			c = 0;
+		}
 		animation.add("bad", [0]);
 		animation.add("good", [1]);
 		color = FlxColor.fromRGB(255, 255, 255, 255);
 		immovable = true;
+		allowCollisions = 0;
 	}
 	
 	override public function update(elapsed:Float):Void 

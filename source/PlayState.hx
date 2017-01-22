@@ -34,7 +34,7 @@ class PlayState extends FlxState
 		
 		bg = new FlxSprite(0, 80);
 		bg.loadGraphic(AssetPaths.bg__png);
-		bg.scrollFactor.set(0.01, 0);// 0.01);
+		bg.scrollFactor.set(0.01, 0.01);
 		
 		makeLevel();
 		

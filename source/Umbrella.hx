@@ -24,6 +24,7 @@ class Umbrella extends Thing
 	{
 		if (on&&PlayState.player.y < y && PlayState.player.velocity.y > 0 && FlxG.overlap(PlayState.player, this)){
 			PlayState.player.bounce();
+			PlayState.player.velocity.y -= 60;
 		}
 		super.update(elapsed);
 	}
