@@ -15,7 +15,7 @@ import SoundPlayer;
 
 class PlayState extends FlxState
 {
-	var lvlname:String = "testland";
+	var lvlname:String = "level1";
 	
 	public static var player:Pirate;
 	var walls:FlxTilemap;
@@ -25,6 +25,7 @@ class PlayState extends FlxState
 	var radios:FlxTypedGroup<Radio>;
 	
 	var bg:FlxSprite;
+	var numTowersActivated:Int = 0;
 	
 	override public function create():Void
 	{
@@ -112,7 +113,12 @@ class PlayState extends FlxState
 	private function playerTouchRadio(P:Pirate, R:Radio):Void
 	{
 		if (Ctrl.jactivate) {
-			R.turnOn();
+			if (R.turnOn()) {
+				numTowersActivated++;
+			}
+		}
+		if (numTowersActivated == 7) {
+			// END GAME STUFF GOES HERE!!!!
 		}
 	}
 	
