@@ -10,8 +10,8 @@ import flixel.FlxG;
  */
 class RadioSound extends FlxSound 
 {
-	var MAX_VOLUME:Float = .1;
-	var MAX_DIST_AWAY:Float = 800;
+	var MAX_VOLUME:Float = 1;
+	var MAX_DIST_AWAY:Float = 2500;
 	var myX:Float;
 	var myY:Float;
 
@@ -21,11 +21,7 @@ class RadioSound extends FlxSound
 		super();
 		myX = X;
 		myY = Y;
-		loadEmbedded("assets/sounds/radioStatic" + c + ".wav", true, false);
-		c++;
-		if (c > 1) {
-			c = 1;
-		}
+		loadEmbedded("assets/sounds/propoganda.wav", true, false);
 		volume = 0;
 	}
 	
