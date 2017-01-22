@@ -15,7 +15,7 @@ import SoundPlayer;
 
 class PlayState extends FlxState
 {
-	var lvlname:String = "testland";
+	var lvlname:String = "level1";
 	
 	public static var player:Pirate;
 	var walls:FlxTilemap;
@@ -101,7 +101,7 @@ class PlayState extends FlxState
 			case "umbrella":
 				things.add(new Umbrella(x, y, Std.parseInt(entityData.get("index"))));
 			case "movingPlatform":
-				things.add(new MovingPlatform(x, y, Std.parseInt(entityData.get("index"))));
+				things.add(new MovingPlatform(x, y, Std.parseInt(entityData.get("index")), Std.parseInt(entityData.get("timeMove"))));
 			case "laser":
 				things.add(new Laser(x, y, Std.parseInt(entityData.get("index")), entityData.get("dir"), entityData.get("cap")=="True"));
 		}
