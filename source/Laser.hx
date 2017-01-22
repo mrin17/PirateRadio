@@ -19,7 +19,7 @@ class Laser extends Thing
 			animation.add("i", [1]);
 			animation.play("i");
 		}
-		switch (dir){
+		switch (dir.toLowerCase()){
 			case "r":
 				angle = 90;
 			case "l":
