@@ -16,7 +16,7 @@ import flixel.util.FlxColor;
 
 class PlayState extends FlxState
 {
-	var lvlname:String = "testland";
+	var lvlname:String = "level1";
 	
 	public static var player:Pirate;
 	var walls:FlxTilemap;
