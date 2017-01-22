@@ -20,7 +20,9 @@ class Radio extends FlxColorShiftingSprite
 	public function new(?X:Float=0, ?Y:Float=0, ID:Int) 
 	{
 		super(X, Y+159, FlxColor.fromRGB(100, 100, 100, 255));
-		loadGraphic(AssetPaths.radioTower__png);
+		loadGraphic(AssetPaths.radioTower__png, true, 151,304);
+		animation.add("off", [0]);
+		animation.add("on", [1]);
 		id = ID;
 		sound = new RadioSound(x, y + 150);
 		sound.play(false, 0, 0);
@@ -40,6 +42,7 @@ class Radio extends FlxColorShiftingSprite
 		if (on) {
 			return false;
 		}
+		animation.play("on");
 		on = true;
 		SoundPlayer.getHeavier(.34);
 		sound.stop();

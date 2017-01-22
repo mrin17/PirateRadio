@@ -124,6 +124,8 @@ class PlayState extends FlxState
 	}
 	
 	function endGame() {
+		SoundPlayer.silence();
+		FlxG.sound.pause();
 		FlxG.switchState(new EndState());
 	}
 	

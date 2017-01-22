@@ -18,6 +18,7 @@ class SoundPlayer
 	
 	public static function start() 
 	{
+		FlxG.sound.pause();
 		if (musics != null){
 			for (m in musics){
 				m.kill();
@@ -69,6 +70,25 @@ class SoundPlayer
 			}else{
 				m.play();
 			}
+		}
+	}
+	
+	public static function playMusic(name:String){
+		FlxG.sound.pause();
+		if (mute) {
+			return;
+		}
+		if(Main.flash){
+			FlxG.sound.playMusic("assets/music/" + name + ".mp3", 1, true);
+		}else{
+			FlxG.sound.playMusic("assets/music/" + name + ".ogg", 1, true);
+		}
+	}
+	
+	public static function silence() {
+		for (m in musics){
+			m.pause();
+			m.destroy();
 		}
 	}
 }
