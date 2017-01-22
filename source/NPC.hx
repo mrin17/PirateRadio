@@ -13,8 +13,8 @@ class NPC extends Thing
 	{
 		super(X, Y+2, ID);
 		c++;
-		loadGraphic("assets/images/crowdnpc" + c+".png", true, 150, 150);
-		if (c > 1){
+		loadGraphic("assets/images/crowdnpc" + c + ".png", true, 150, 150);
+		if (c > 2){
 			c = 0;
 		}
 		animation.add("off", [1]);
