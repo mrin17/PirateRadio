@@ -7,7 +7,7 @@ package;
 class Billboard extends Thing 
 {
 
-	public function new(?X:Float=0, ?Y:Float=0, ID:Int) 
+	public function new(?X:Float=0, ?Y:Float=0, ID:Int)
 	{
 		super(X, Y, ID);
 		loadGraphic(AssetPaths.billboard__png, false, 608, 304);
