@@ -23,7 +23,6 @@ class PlayState extends FlxState
 	
 	public static var things:FlxTypedGroup<Thing>;
 	var radios:FlxTypedGroup<Radio>;
-	var soundPlayer:SoundPlayer;
 	
 	var bg:FlxSprite;
 	
@@ -53,6 +52,7 @@ class PlayState extends FlxState
 		
 		FlxG.camera.follow(player, FlxCameraFollowStyle.PLATFORMER);
 		SoundPlayer.start();
+		SoundPlayer.reset();
 		super.create();
 
 	}
@@ -64,6 +64,12 @@ class PlayState extends FlxState
 		FlxG.overlap(player, radios, playerTouchRadio);
 		if (FlxG.keys.anyJustPressed(["R"])){
 			FlxG.resetState();
+		}
+		if (FlxG.keys.anyJustPressed(["O"])){
+			SoundPlayer.reset();
+		}
+		if (FlxG.keys.anyJustPressed(["P"])){
+			SoundPlayer.getHeavier(.25);
 		}
 		super.update(elapsed);
 	}

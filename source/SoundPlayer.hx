@@ -17,6 +17,11 @@ class SoundPlayer
 	
 	public static function start() 
 	{
+		if (musics != null){
+			for (m in musics){
+				m.kill();
+			}
+		}
 		musics = new FlxTypedGroup<FlxSound>();
 		// We're using the actual path because Flash can only play MP3s and non-flash can only play OGGs
 		var extension:String = ".ogg";

@@ -52,4 +52,10 @@ class Radio extends FlxColorShiftingSprite
 		}
 	}
 	
+	override public function destroy():Void 
+	{
+		sound.destroy();
+		super.destroy();
+	}
+	
 }
