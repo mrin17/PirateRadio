@@ -55,6 +55,7 @@ class Pirate extends FlxSprite
 				animation.play("run");
 				if (velocity.x < 0){
 					animation.play("slide");
+					velocity.x += speed;
 				}
 			}
 			facing = FlxObject.RIGHT;
@@ -65,6 +66,7 @@ class Pirate extends FlxSprite
 				animation.play("run");
 				if (velocity.x > 0){
 					animation.play("slide");
+					velocity.x -= speed;
 				}
 			}
 			facing = FlxObject.LEFT;
