@@ -17,7 +17,7 @@ class Main extends Sprite
 			flash = true;
 		#end
 		super();
-		addChild(new FlxGame(1920, 1080, StartState, 1, 60, 60, true));
+		addChild(new FlxGame(1920, 1080, MenuState, 1, 60, 60, true));
 		FlxG.mouse.visible = false;
 		Ctrl.update();
 	}

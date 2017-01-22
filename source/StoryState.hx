@@ -24,7 +24,7 @@ class StoryState extends FlxState
 		image.animation.add("story", [0, 1, 2]);
 		image.animation.play("story");
 		image.animation.pause();
-		txt = new FlxText(0, FlxG.height - FlxG.height / 4, 1920, "Something something radios", 32);
+		txt = new FlxText(0, FlxG.height - FlxG.height / 3.5, 1920, "Something something radios", 32);
 		txt.alignment = "center";
 		txt.text = dlg[count];
 		add(image);
